@@ -16,7 +16,8 @@ return { -- Autocompletion
       end)(),
     },
     'saadparwaiz1/cmp_luasnip',
-
+    'luckasRanarison/tailwind-tools.nvim',
+    'onsails/lspkind-nvim',
     -- Adds other completion capabilities.
     --  nvim-cmp does not ship with all sources by default. They are split
     --  into multiple repos for maintenance purposes.
@@ -34,8 +35,18 @@ return { -- Autocompletion
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
-
+    local lspkind = require 'lspkind'
     cmp.setup {
+
+      formatting = {
+        format = lspkind.cmp_format {
+          mode = 'symbol',
+          maxwidth = 50,
+          ellipsis_char = '...',
+          show_labelDetails = true,
+          before = require('tailwind-tools.cmp').lspkind_format,
+        },
+      },
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
