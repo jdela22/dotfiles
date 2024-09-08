@@ -1,9 +1,0 @@
-{
-	"preferences": {
-		"typescript": true,
-		"eslint": true,
-		"srcDir": true,
-		"importAlias": "@/*",
-		"tailwind": true
-	}
-}
