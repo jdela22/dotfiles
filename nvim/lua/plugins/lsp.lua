@@ -61,6 +61,12 @@ return { -- LSP Configuration & Plugins
         -- Find references for the word under your cursor.
         map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
+        -- Find incoming calls
+        map('gic', require('telescope.builtin').lsp_incoming_calls, '[I]ncoming [C]alls')
+
+        -- Find incoming calls
+        map('goc', require('telescope.builtin').lsp_outgoing_calls, '[O]utgoing [C]alls')
+
         -- Jump to the implementation of the word under your cursor.
         --  Useful when your language has ways of declaring types without an actual implementation.
         map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
