@@ -10,6 +10,7 @@ vim.opt.rtp:prepend(lazypath)
 local lazy = require 'lazy'
 
 lazy.setup {
+  require 'kickstart.plugins.indent_line',
   spec = { import = 'plugins' },
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the

@@ -4,7 +4,6 @@ return { -- Autoformat
     notify_on_error = true,
     format_on_save = {
       timeout_ms = 500,
-      --Disabling for prettier/eslint, maybe turn back on
       lsp_fallback = true,
     },
     log_level = vim.log.levels.INFO,

@@ -1,1 +1,1 @@
-return { 'stevearc/dressing.nvim', opts = {}, enabled = false }
+return { 'stevearc/dressing.nvim', opts = {} }

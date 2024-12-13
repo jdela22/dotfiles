@@ -138,7 +138,7 @@ return { -- LSP Configuration & Plugins
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       -- clangd = {},
-      -- gopls = {},
+      gopls = {},
       -- pyright = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -147,14 +147,12 @@ return { -- LSP Configuration & Plugins
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
-      -- tsserver = {},
-      --
-      -- eslint_d = {},
+      tsserver = {},
+      tailwindcss = {},
+      eslint_d = {},
+      svelte = {},
 
       lua_ls = {
-        -- cmd = {...},
-        -- filetypes { ...},
-        -- capabilities = {},
         settings = {
           Lua = {
             runtime = { version = 'LuaJIT' },
@@ -179,12 +177,6 @@ return { -- LSP Configuration & Plugins
       },
     }
 
-    -- Ensure the servers and tools above are installed
-    --  To check the current status of installed tools and/or manually install
-    --  other tools, you can run
-    --    :Mason
-    --
-    --  You can press `g?` for help in this menu
     require('mason').setup()
 
     -- You can add other tools here that you want Mason to install
@@ -192,6 +184,7 @@ return { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
+      'prettierd',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
