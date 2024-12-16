@@ -41,6 +41,7 @@ return { -- Collection of various small independent plugins/modules
 
     -- Simple and easy statusline.
     require('mini.statusline').setup { use_icons = vim.g.have_nerd_font }
+
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin
     -- require('mini.statusline').setup()
