@@ -3,7 +3,7 @@ return { -- Autoformat
   opts = {
     notify_on_error = true,
     format_on_save = {
-      timeout_ms = 500,
+      timeout_ms = 1500,
       lsp_fallback = true,
     },
     log_level = vim.log.levels.INFO,
@@ -17,7 +17,7 @@ return { -- Autoformat
       typescript = { { 'prettierd', 'prettier' } },
       typescriptreact = { 'prettier' },
       javascript = { { 'prettierd', 'prettier' } },
-      javascriptreact = { { 'prettierd', 'prettier' } },
+      javascriptreact = { { 'prettierd', 'prettier', stop_after_first = true } },
       json = { { 'prettierd', 'prettier' } },
       html = { { 'prettierd', 'prettier' } },
       css = { { 'prettierd', 'prettier' } },

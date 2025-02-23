@@ -42,6 +42,12 @@ return { -- Collection of various small independent plugins/modules
     -- Simple and easy statusline.
     require('mini.statusline').setup { use_icons = vim.g.have_nerd_font }
 
+    -- Preview colors
+    require('mini.hipatterns').setup {
+      highlighters = {
+        hex_color = require('mini.hipatterns').gen_highlighter.hex_color(),
+      },
+    }
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin
     -- require('mini.statusline').setup()
