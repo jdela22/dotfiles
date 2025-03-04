@@ -41,14 +41,6 @@ return {
       end,
       desc = 'Notification History',
     },
-    -- {
-    --   '<leader>e',
-    --   function()
-    --     require('snacks').explorer()
-    --   end,
-    --   desc = 'File Explorer',
-    -- },
-    -- find
     {
       '<leader>fb',
       function()

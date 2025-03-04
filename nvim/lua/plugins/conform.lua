@@ -14,13 +14,13 @@ return { -- Autoformat
       --
       -- You can use a sub-list to tell conform to run *until* a formatter
       -- is found.
-      typescript = { { 'prettierd', 'prettier' } },
-      typescriptreact = { 'prettier' },
-      javascript = { { 'prettierd', 'prettier' } },
-      javascriptreact = { { 'prettierd', 'prettier', stop_after_first = true } },
-      json = { { 'prettierd', 'prettier' } },
-      html = { { 'prettierd', 'prettier' } },
-      css = { { 'prettierd', 'prettier' } },
+      typescript = { 'prettierd' },
+      typescriptreact = { 'prettierd' },
+      javascript = { 'prettierd' },
+      javascriptreact = { 'prettierd' },
+      json = { 'prettierd' },
+      html = { 'prettierd' },
+      css = { 'prettierd' },
     },
   },
 }
