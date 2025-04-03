@@ -151,7 +151,7 @@ return {
     {
       '<leader>sg',
       function()
-        require('snacks').picker.grep()
+        require('snacks').picker.grep { regex = false }
       end,
       desc = 'Grep',
     },
