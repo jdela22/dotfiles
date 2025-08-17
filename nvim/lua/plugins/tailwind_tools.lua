@@ -6,5 +6,5 @@ return {
     'nvim-treesitter/nvim-treesitter',
     'nvim-telescope/telescope.nvim', -- optional
   },
-  opts = {}, -- your configuration
+  opts = { server = { settings = { experimental = { classRegex = { '["\'`]([^"\'`]*).*?["\'`]' } } } } }, -- your configuration
 }
