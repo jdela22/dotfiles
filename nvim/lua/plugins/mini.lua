@@ -30,7 +30,8 @@ return { -- Collection of various small independent plugins/modules
       search_method = 'cover_or_next',
     }
 
-    require('mini.pairs').setup()
+    -- Removing in favor of nvim-autopairs for more sane defaults
+    -- require('mini.pairs').setup()
     -- Remap adding surrounding to Visual mode selection
     vim.keymap.del('x', 'ys')
     vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
