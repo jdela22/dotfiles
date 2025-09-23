@@ -351,7 +351,7 @@ return {
     {
       '<leader>ss',
       function()
-        require('snacks').picker.lsp_symbols()
+        require('snacks').picker.lsp_symbols { filter = { default = true } }
       end,
       desc = 'LSP Symbols',
     },
