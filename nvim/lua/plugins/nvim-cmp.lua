@@ -16,7 +16,7 @@ return { -- Autocompletion
       end)(),
     },
     'saadparwaiz1/cmp_luasnip',
-    'luckasRanarison/tailwind-tools.nvim',
+    -- 'luckasRanarison/tailwind-tools.nvim',
     'onsails/lspkind-nvim',
     -- Adds other completion capabilities.
     --  nvim-cmp does not ship with all sources by default. They are split
@@ -39,13 +39,34 @@ return { -- Autocompletion
     cmp.setup {
 
       formatting = {
-        format = lspkind.cmp_format {
-          mode = 'symbol',
-          maxwidth = 50,
-          ellipsis_char = '...',
-          show_labelDetails = true,
-          before = require('tailwind-tools.cmp').lspkind_format,
-        },
+        -- kind icon / color icon + completion + kind text
+        fields = { 'menu', 'abbr', 'kind' },
+
+        format = function(entry, item)
+          local entryItem = entry.completion_item
+          local color = entryItem.documentation
+          -- check if color is hexcolor
+          if color and type(color) == 'string' and color:match '^#%x%x%x%x%x%x$' then
+            local hl = 'hex-' .. color:sub(2)
+
+            if #vim.api.nvim_get_hl(0, { name = hl }) == 0 then
+              vim.api.nvim_set_hl(0, hl, { fg = color })
+            end
+
+            item.menu = ' '
+            item.menu_hl_group = hl
+          end
+          -- else
+          -- add your lspkind icon here!
+          -- item.menu_hl_group = item.kind_hl_group
+          -- Replace the kind text with icon + text
+          item.kind = lspkind.presets.default[item.kind] .. ' ' .. item.kind
+
+          -- optional: keep color of the kind
+          -- item.menu_hl_group = item.kind_hl_group
+
+          return item
+        end,
       },
       snippet = {
         expand = function(args)
@@ -53,7 +74,10 @@ return { -- Autocompletion
         end,
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
-
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`
       --

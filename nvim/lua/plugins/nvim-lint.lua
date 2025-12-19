@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   'mfussenegger/nvim-lint',
   config = function()
     local lint = require 'lint'
@@ -10,6 +11,10 @@ return {
       javascriptreact = eslint,
       typescriptreact = eslint,
     }
+
+    -- Possible solution to updated eslint lsp? not working atm
+    local eslintcli = lint.linters.eslint_d
+    eslintcli.args = { '--no-warn-ignored' }
 
     vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufReadPost', 'InsertLeave', 'TextChanged' }, {
       callback = function()

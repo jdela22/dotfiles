@@ -358,7 +358,7 @@ return {
     {
       '<leader>sS',
       function()
-        require('snacks').picker.lsp_workspace_symbols()
+        require('snacks').picker.lsp_workspace_symbols { filter = { default = true } }
       end,
       desc = 'LSP Workspace Symbols',
     },
