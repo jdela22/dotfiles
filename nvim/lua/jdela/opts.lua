@@ -76,5 +76,5 @@ vim.opt.fillchars:append 'diff:╱'
 -- Use virtual lines for errors, virtual text for warnings
 vim.diagnostic.config {
   virtual_text = { severity = { max = vim.diagnostic.severity.WARN } },
-  virtual_lines = { severity = { min = vim.diagnostic.severity.ERROR } },
+  virtual_lines = { current_line = true },
 }

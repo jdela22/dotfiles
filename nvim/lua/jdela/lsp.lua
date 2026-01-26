@@ -60,6 +60,7 @@ local servers = {
   lua_ls = {},
   cssls = {},
   css_variables = {},
+  astro = {},
 }
 
 vim.lsp.config('lua_ls', {
