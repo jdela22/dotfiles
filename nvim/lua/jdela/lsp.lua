@@ -55,12 +55,13 @@ local servers = {
   -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
   ts_ls = {},
   tailwindcss = {},
-  -- eslint_d = {},
+  eslint_d = {},
   eslint = {},
   lua_ls = {},
   cssls = {},
   css_variables = {},
   astro = {},
+  biome = {},
 }
 
 vim.lsp.config('lua_ls', {

@@ -1,3 +1,11 @@
+local jsFormatters = function(bufnr)
+  if require('conform').get_formatter_info('biome-check', bufnr).available then
+    return { 'biome-check' }
+  else
+    return { 'eslint_d', 'prettierd' }
+  end
+end
+
 return { -- Autoformat
   'stevearc/conform.nvim',
   opts = {
@@ -6,7 +14,7 @@ return { -- Autoformat
       timeout_ms = 1500,
       lsp_fallback = true,
     },
-    log_level = vim.log.levels.INFO,
+    log_level = vim.log.levels.DEBUG,
     formatters_by_ft = {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
@@ -14,13 +22,14 @@ return { -- Autoformat
       --
       -- You can use a sub-list to tell conform to run *until* a formatter
       -- is found.
-      typescript = { 'prettierd' },
-      typescriptreact = { 'prettierd' },
-      javascript = { 'prettierd' },
-      javascriptreact = { 'prettierd' },
-      json = { 'prettierd' },
-      html = { 'prettierd' },
-      css = { 'prettierd' },
+      astro = jsFormatters,
+      typescript = jsFormatters,
+      typescriptreact = jsFormatters,
+      javascript = jsFormatters,
+      javascriptreact = jsFormatters,
+      json = jsFormatters,
+      html = jsFormatters,
+      css = jsFormatters,
     },
   },
 }
