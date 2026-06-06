@@ -59,26 +59,10 @@ local servers = {
   eslint = {},
   lua_ls = {},
   cssls = {},
-  css_variables = {},
   astro = {},
+  css_variables = {},
   biome = {},
 }
-
-vim.lsp.config('lua_ls', {
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        globals = {
-          'vim',
-          'require',
-        },
-      },
-    },
-  },
-})
 
 require('mason').setup()
 
@@ -89,9 +73,9 @@ vim.list_extend(ensure_installed, {
   'stylua', -- Used to format lua code
   'prettierd',
 })
+
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
 require('mason-lspconfig').setup {
   ensure_installed = servers,
-  automatic_installation = true,
 }

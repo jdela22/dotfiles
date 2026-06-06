@@ -46,6 +46,8 @@ vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww ~/.local/bin/tmux-sessioniz
 -- Launch diff view
 vim.keymap.set('n', '<leader>dv', '<cmd>CodeDiff<cr>')
 
+-- Restart nvim
+vim.keymap.set('n', '<leader>rs', '<cmd>restart<cr>')
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --  See `:help wincmd` for a list of all window commands
