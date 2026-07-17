@@ -41,7 +41,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     end
 
-    vim.lsp.document_color.enable(false, { bufnr = event.buf })
+    -- Certain oklch colors were breaking the document_color feature of the css lsp
+    -- It seems to be working now (7/16/26) if still no problems, we can delete this
+    -- vim.lsp.document_color.enable(false, { bufnr = event.buf })
   end,
 })
 
@@ -85,9 +87,6 @@ require('mason-lspconfig').setup {
   },
 }
 
--- CSS LSP doesn't clamp conversion to rgb for high-chroma oklch colors
--- Nvim client crashes when trying to interpret the Out of bounds values
---
 -- Tailwind causes unknown @ rules warnings we also ignore
 vim.lsp.config.cssls = vim.tbl_deep_extend('force', vim.lsp.config.cssls or {}, {
   settings = {
@@ -98,8 +97,5 @@ vim.lsp.config.cssls = vim.tbl_deep_extend('force', vim.lsp.config.cssls or {}, 
       },
     },
   },
-  -- on_attach = function(client)
-  --   client.server_capabilities.colorProvider = false
-  -- end,
 })
 vim.lsp.enable 'cssls'
