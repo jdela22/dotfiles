@@ -40,6 +40,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         callback = vim.lsp.buf.clear_references,
       })
     end
+
+    vim.lsp.document_color.enable(false, { bufnr = event.buf })
   end,
 })
 
@@ -58,7 +60,7 @@ local servers = {
   eslint_d = {},
   eslint = {},
   lua_ls = {},
-  cssls = {},
+
   astro = {},
   css_variables = {},
   biome = {},
@@ -78,4 +80,26 @@ require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
 require('mason-lspconfig').setup {
   ensure_installed = servers,
+  automatic_enable = {
+    exclude = { 'cssls' },
+  },
 }
+
+-- CSS LSP doesn't clamp conversion to rgb for high-chroma oklch colors
+-- Nvim client crashes when trying to interpret the Out of bounds values
+--
+-- Tailwind causes unknown @ rules warnings we also ignore
+vim.lsp.config.cssls = vim.tbl_deep_extend('force', vim.lsp.config.cssls or {}, {
+  settings = {
+    css = {
+      validate = true,
+      lint = {
+        unknownAtRules = 'ignore',
+      },
+    },
+  },
+  -- on_attach = function(client)
+  --   client.server_capabilities.colorProvider = false
+  -- end,
+})
+vim.lsp.enable 'cssls'
